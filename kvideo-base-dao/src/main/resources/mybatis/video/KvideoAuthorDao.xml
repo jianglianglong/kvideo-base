@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomi.base.k.video.dao.KvideoAuthorDao">
+  <resultMap id="BaseResultMap" type="com.xiaomi.base.k.video.domain.KvideoAuthorModel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cp" jdbcType="SMALLINT" property="cp" />
+    <result column="cp_id" jdbcType="BIGINT" property="cpId" />
+    <result column="uni_user_id" jdbcType="BIGINT" property="uniUserId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="ddesc" jdbcType="VARCHAR" property="ddesc" />
+    <result column="mi_type" jdbcType="SMALLINT" property="miType" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="ks_icon" jdbcType="VARCHAR" property="ksIcon" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+    <result column="short_ddesc" jdbcType="VARCHAR" property="shortDdesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cp, cp_id, uni_user_id, name, ddesc, mi_type, icon, ks_icon, state, gmt_create, 
+    gmt_modify, short_ddesc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kvideo_crawler_author
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from kvideo_crawler_author
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xiaomi.base.k.video.domain.KvideoAuthorModel" useGeneratedKeys="true">
+    insert into kvideo_crawler_author (cp, cp_id, uni_user_id, 
+      name, ddesc, mi_type, 
+      icon, ks_icon, state, 
+      gmt_create, gmt_modify, short_ddesc
+      )
+    values (#{cp,jdbcType=SMALLINT}, #{cpId,jdbcType=BIGINT}, #{uniUserId,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{ddesc,jdbcType=VARCHAR}, #{miType,jdbcType=SMALLINT}, 
+      #{icon,jdbcType=VARCHAR}, #{ksIcon,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}, #{shortDdesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xiaomi.base.k.video.domain.KvideoAuthorModel" useGeneratedKeys="true">
+    insert into kvideo_crawler_author
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cp != null">
+        cp,
+      </if>
+      <if test="cpId != null">
+        cp_id,
+      </if>
+      <if test="uniUserId != null">
+        uni_user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="ddesc != null">
+        ddesc,
+      </if>
+      <if test="miType != null">
+        mi_type,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="ksIcon != null">
+        ks_icon,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+      <if test="shortDdesc != null">
+        short_ddesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cp != null">
+        #{cp,jdbcType=SMALLINT},
+      </if>
+      <if test="cpId != null">
+        #{cpId,jdbcType=BIGINT},
+      </if>
+      <if test="uniUserId != null">
+        #{uniUserId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ddesc != null">
+        #{ddesc,jdbcType=VARCHAR},
+      </if>
+      <if test="miType != null">
+        #{miType,jdbcType=SMALLINT},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="ksIcon != null">
+        #{ksIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shortDdesc != null">
+        #{shortDdesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomi.base.k.video.domain.KvideoAuthorModel">
+    update kvideo_crawler_author
+    <set>
+      <if test="cp != null">
+        cp = #{cp,jdbcType=SMALLINT},
+      </if>
+      <if test="cpId != null">
+        cp_id = #{cpId,jdbcType=BIGINT},
+      </if>
+      <if test="uniUserId != null">
+        uni_user_id = #{uniUserId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ddesc != null">
+        ddesc = #{ddesc,jdbcType=VARCHAR},
+      </if>
+      <if test="miType != null">
+        mi_type = #{miType,jdbcType=SMALLINT},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="ksIcon != null">
+        ks_icon = #{ksIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shortDdesc != null">
+        short_ddesc = #{shortDdesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaomi.base.k.video.domain.KvideoAuthorModel">
+    update kvideo_crawler_author
+    set cp = #{cp,jdbcType=SMALLINT},
+      cp_id = #{cpId,jdbcType=BIGINT},
+      uni_user_id = #{uniUserId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      ddesc = #{ddesc,jdbcType=VARCHAR},
+      mi_type = #{miType,jdbcType=SMALLINT},
+      icon = #{icon,jdbcType=VARCHAR},
+      ks_icon = #{ksIcon,jdbcType=VARCHAR},
+      state = #{state,jdbcType=SMALLINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      short_ddesc = #{shortDdesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

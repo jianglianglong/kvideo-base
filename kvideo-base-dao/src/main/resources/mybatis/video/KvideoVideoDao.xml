@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaomi.base.k.video.dao.KvideoVideoDao">
+  <resultMap id="BaseResultMap" type="com.xiaomi.base.k.video.domain.KvideoVideoModel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cp" jdbcType="SMALLINT" property="cp" />
+    <result column="cp_id" jdbcType="BIGINT" property="cpId" />
+    <result column="cp_video_id" jdbcType="VARCHAR" property="cpVideoId" />
+    <result column="uni_user_id" jdbcType="BIGINT" property="uniUserId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="title_md5" jdbcType="VARCHAR" property="titleMd5" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="cp_tags" jdbcType="VARCHAR" property="cpTags" />
+    <result column="cp_chinese_tags" jdbcType="VARCHAR" property="cpChineseTags" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="video_seconds" jdbcType="INTEGER" property="videoSeconds" />
+    <result column="list_image_url" jdbcType="VARCHAR" property="listImageUrl" />
+    <result column="ks_list_image_url" jdbcType="VARCHAR" property="ksListImageUrl" />
+    <result column="detail_image_url" jdbcType="VARCHAR" property="detailImageUrl" />
+    <result column="cp_url1" jdbcType="VARCHAR" property="cpUrl1" />
+    <result column="cp_url2" jdbcType="VARCHAR" property="cpUrl2" />
+    <result column="save_bulket" jdbcType="VARCHAR" property="saveBulket" />
+    <result column="save_path" jdbcType="VARCHAR" property="savePath" />
+    <result column="save_url" jdbcType="VARCHAR" property="saveUrl" />
+    <result column="definition" jdbcType="VARCHAR" property="definition" />
+    <result column="vtype" jdbcType="VARCHAR" property="vtype" />
+    <result column="vwidth" jdbcType="INTEGER" property="vwidth" />
+    <result column="vheight" jdbcType="INTEGER" property="vheight" />
+    <result column="bitrate" jdbcType="INTEGER" property="bitrate" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="code_type" jdbcType="VARCHAR" property="codeType" />
+    <result column="state" jdbcType="SMALLINT" property="state" />
+    <result column="last_switch_time" jdbcType="TIMESTAMP" property="lastSwitchTime" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cp, cp_id, cp_video_id, uni_user_id, title, title_md5, summary, cp_tags, cp_chinese_tags, 
+    publish_time, video_seconds, list_image_url, ks_list_image_url, detail_image_url, 
+    cp_url1, cp_url2, save_bulket, save_path, save_url, definition, vtype, vwidth, vheight, 
+    bitrate, size, code_type, state, last_switch_time, gmt_create, gmt_modify
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kvideo_crawler_video
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from kvideo_crawler_video
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xiaomi.base.k.video.domain.KvideoVideoModel" useGeneratedKeys="true">
+    insert into kvideo_crawler_video (cp, cp_id, cp_video_id, 
+      uni_user_id, title, title_md5, 
+      summary, cp_tags, cp_chinese_tags, 
+      publish_time, video_seconds, list_image_url, 
+      ks_list_image_url, detail_image_url, cp_url1, 
+      cp_url2, save_bulket, save_path, 
+      save_url, definition, vtype, 
+      vwidth, vheight, bitrate, 
+      size, code_type, state, 
+      last_switch_time, gmt_create, gmt_modify
+      )
+    values (#{cp,jdbcType=SMALLINT}, #{cpId,jdbcType=BIGINT}, #{cpVideoId,jdbcType=VARCHAR}, 
+      #{uniUserId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{titleMd5,jdbcType=VARCHAR}, 
+      #{summary,jdbcType=VARCHAR}, #{cpTags,jdbcType=VARCHAR}, #{cpChineseTags,jdbcType=VARCHAR}, 
+      #{publishTime,jdbcType=TIMESTAMP}, #{videoSeconds,jdbcType=INTEGER}, #{listImageUrl,jdbcType=VARCHAR}, 
+      #{ksListImageUrl,jdbcType=VARCHAR}, #{detailImageUrl,jdbcType=VARCHAR}, #{cpUrl1,jdbcType=VARCHAR}, 
+      #{cpUrl2,jdbcType=VARCHAR}, #{saveBulket,jdbcType=VARCHAR}, #{savePath,jdbcType=VARCHAR}, 
+      #{saveUrl,jdbcType=VARCHAR}, #{definition,jdbcType=VARCHAR}, #{vtype,jdbcType=VARCHAR}, 
+      #{vwidth,jdbcType=INTEGER}, #{vheight,jdbcType=INTEGER}, #{bitrate,jdbcType=INTEGER}, 
+      #{size,jdbcType=INTEGER}, #{codeType,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
+      #{lastSwitchTime,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xiaomi.base.k.video.domain.KvideoVideoModel" useGeneratedKeys="true">
+    insert into kvideo_crawler_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cp != null">
+        cp,
+      </if>
+      <if test="cpId != null">
+        cp_id,
+      </if>
+      <if test="cpVideoId != null">
+        cp_video_id,
+      </if>
+      <if test="uniUserId != null">
+        uni_user_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="titleMd5 != null">
+        title_md5,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="cpTags != null">
+        cp_tags,
+      </if>
+      <if test="cpChineseTags != null">
+        cp_chinese_tags,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="videoSeconds != null">
+        video_seconds,
+      </if>
+      <if test="listImageUrl != null">
+        list_image_url,
+      </if>
+      <if test="ksListImageUrl != null">
+        ks_list_image_url,
+      </if>
+      <if test="detailImageUrl != null">
+        detail_image_url,
+      </if>
+      <if test="cpUrl1 != null">
+        cp_url1,
+      </if>
+      <if test="cpUrl2 != null">
+        cp_url2,
+      </if>
+      <if test="saveBulket != null">
+        save_bulket,
+      </if>
+      <if test="savePath != null">
+        save_path,
+      </if>
+      <if test="saveUrl != null">
+        save_url,
+      </if>
+      <if test="definition != null">
+        definition,
+      </if>
+      <if test="vtype != null">
+        vtype,
+      </if>
+      <if test="vwidth != null">
+        vwidth,
+      </if>
+      <if test="vheight != null">
+        vheight,
+      </if>
+      <if test="bitrate != null">
+        bitrate,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="codeType != null">
+        code_type,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="lastSwitchTime != null">
+        last_switch_time,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cp != null">
+        #{cp,jdbcType=SMALLINT},
+      </if>
+      <if test="cpId != null">
+        #{cpId,jdbcType=BIGINT},
+      </if>
+      <if test="cpVideoId != null">
+        #{cpVideoId,jdbcType=VARCHAR},
+      </if>
+      <if test="uniUserId != null">
+        #{uniUserId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="titleMd5 != null">
+        #{titleMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="cpTags != null">
+        #{cpTags,jdbcType=VARCHAR},
+      </if>
+      <if test="cpChineseTags != null">
+        #{cpChineseTags,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoSeconds != null">
+        #{videoSeconds,jdbcType=INTEGER},
+      </if>
+      <if test="listImageUrl != null">
+        #{listImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="ksListImageUrl != null">
+        #{ksListImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailImageUrl != null">
+        #{detailImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cpUrl1 != null">
+        #{cpUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="cpUrl2 != null">
+        #{cpUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="saveBulket != null">
+        #{saveBulket,jdbcType=VARCHAR},
+      </if>
+      <if test="savePath != null">
+        #{savePath,jdbcType=VARCHAR},
+      </if>
+      <if test="saveUrl != null">
+        #{saveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="definition != null">
+        #{definition,jdbcType=VARCHAR},
+      </if>
+      <if test="vtype != null">
+        #{vtype,jdbcType=VARCHAR},
+      </if>
+      <if test="vwidth != null">
+        #{vwidth,jdbcType=INTEGER},
+      </if>
+      <if test="vheight != null">
+        #{vheight,jdbcType=INTEGER},
+      </if>
+      <if test="bitrate != null">
+        #{bitrate,jdbcType=INTEGER},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="codeType != null">
+        #{codeType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="lastSwitchTime != null">
+        #{lastSwitchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaomi.base.k.video.domain.KvideoVideoModel">
+    update kvideo_crawler_video
+    <set>
+      <if test="cp != null">
+        cp = #{cp,jdbcType=SMALLINT},
+      </if>
+      <if test="cpId != null">
+        cp_id = #{cpId,jdbcType=BIGINT},
+      </if>
+      <if test="cpVideoId != null">
+        cp_video_id = #{cpVideoId,jdbcType=VARCHAR},
+      </if>
+      <if test="uniUserId != null">
+        uni_user_id = #{uniUserId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="titleMd5 != null">
+        title_md5 = #{titleMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="cpTags != null">
+        cp_tags = #{cpTags,jdbcType=VARCHAR},
+      </if>
+      <if test="cpChineseTags != null">
+        cp_chinese_tags = #{cpChineseTags,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoSeconds != null">
+        video_seconds = #{videoSeconds,jdbcType=INTEGER},
+      </if>
+      <if test="listImageUrl != null">
+        list_image_url = #{listImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="ksListImageUrl != null">
+        ks_list_image_url = #{ksListImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailImageUrl != null">
+        detail_image_url = #{detailImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cpUrl1 != null">
+        cp_url1 = #{cpUrl1,jdbcType=VARCHAR},
+      </if>
+      <if test="cpUrl2 != null">
+        cp_url2 = #{cpUrl2,jdbcType=VARCHAR},
+      </if>
+      <if test="saveBulket != null">
+        save_bulket = #{saveBulket,jdbcType=VARCHAR},
+      </if>
+      <if test="savePath != null">
+        save_path = #{savePath,jdbcType=VARCHAR},
+      </if>
+      <if test="saveUrl != null">
+        save_url = #{saveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="definition != null">
+        definition = #{definition,jdbcType=VARCHAR},
+      </if>
+      <if test="vtype != null">
+        vtype = #{vtype,jdbcType=VARCHAR},
+      </if>
+      <if test="vwidth != null">
+        vwidth = #{vwidth,jdbcType=INTEGER},
+      </if>
+      <if test="vheight != null">
+        vheight = #{vheight,jdbcType=INTEGER},
+      </if>
+      <if test="bitrate != null">
+        bitrate = #{bitrate,jdbcType=INTEGER},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="codeType != null">
+        code_type = #{codeType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="lastSwitchTime != null">
+        last_switch_time = #{lastSwitchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaomi.base.k.video.domain.KvideoVideoModel">
+    update kvideo_crawler_video
+    set cp = #{cp,jdbcType=SMALLINT},
+      cp_id = #{cpId,jdbcType=BIGINT},
+      cp_video_id = #{cpVideoId,jdbcType=VARCHAR},
+      uni_user_id = #{uniUserId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      title_md5 = #{titleMd5,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      cp_tags = #{cpTags,jdbcType=VARCHAR},
+      cp_chinese_tags = #{cpChineseTags,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      video_seconds = #{videoSeconds,jdbcType=INTEGER},
+      list_image_url = #{listImageUrl,jdbcType=VARCHAR},
+      ks_list_image_url = #{ksListImageUrl,jdbcType=VARCHAR},
+      detail_image_url = #{detailImageUrl,jdbcType=VARCHAR},
+      cp_url1 = #{cpUrl1,jdbcType=VARCHAR},
+      cp_url2 = #{cpUrl2,jdbcType=VARCHAR},
+      save_bulket = #{saveBulket,jdbcType=VARCHAR},
+      save_path = #{savePath,jdbcType=VARCHAR},
+      save_url = #{saveUrl,jdbcType=VARCHAR},
+      definition = #{definition,jdbcType=VARCHAR},
+      vtype = #{vtype,jdbcType=VARCHAR},
+      vwidth = #{vwidth,jdbcType=INTEGER},
+      vheight = #{vheight,jdbcType=INTEGER},
+      bitrate = #{bitrate,jdbcType=INTEGER},
+      size = #{size,jdbcType=INTEGER},
+      code_type = #{codeType,jdbcType=VARCHAR},
+      state = #{state,jdbcType=SMALLINT},
+      last_switch_time = #{lastSwitchTime,jdbcType=TIMESTAMP},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
