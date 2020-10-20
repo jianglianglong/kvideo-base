@@ -172,6 +172,28 @@ public class LambdaComponent {
 
     }
 
+    /**
+     * 多条流合并
+     */
+    @Test
+    public void testFlatMap() {
+        List<String> map1 = Lists.newArrayList("1", "2");
+        List<String> map2 = Lists.newArrayList("3", "4");
+        List<List<String>> mapList = Arrays.asList(map1, map2);
+
+        List<String> collect = mapList.stream().flatMap(Collection::stream).collect(Collectors.toList());
+        collect.stream().forEach(System.out::println);
+    }
+
+    /**
+     * anyMatch
+     */
+
+    /**
+     * 生成student集合
+     *
+     * @return
+     */
     private List<Student> genStudentList() {
 
         Student student2 = new Student("小红", "女","24", 89);
