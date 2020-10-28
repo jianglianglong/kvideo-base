@@ -23,7 +23,7 @@ public class VideoAuthorServiceImpl implements VideoAuthorService {
     public OpResult<KvideoAuthorModel> findAuthorInfoById(Long authorId) {
         KvideoAuthorModel kvideoAuthorModel = kvideoAuthorDao.selectByPrimaryKey(authorId);
 
-        kvideoAuthorModel = null;
+//        kvideoAuthorModel = null;
         //测试全局异常处理
         Short cp = kvideoAuthorModel.getCp();
 
