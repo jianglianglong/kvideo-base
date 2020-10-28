@@ -28,3 +28,5 @@ hs_err_pid*
 .idea/
 target/
 /kvideo-base-dao/pre/
+#mac
+.DS_Store
