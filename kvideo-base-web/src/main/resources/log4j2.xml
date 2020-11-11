@@ -11,6 +11,20 @@
         <Property name="NAME_PATTERN">%d{HH:mm:ss.SSS} [%thread] %level [%C.%M:%L] - %msg%xEx%n</Property>
     </Properties>
 
+    <!-- 单词解释： Match：匹配 DENY：拒绝 Mismatch：不匹配 ACCEPT：接受 -->
+    <!-- DENY，日志将立即被抛弃不再经过其他过滤器； NEUTRAL，有序列表里的下个过滤器过接着处理日志； ACCEPT，日志会被立即处理，不再经过剩余过滤器。 -->
+    <!--输出日志的格式
+     %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间
+     %p : 日志输出格式
+     %c : logger的名称
+     %m : 日志内容，即 logger.info("message")
+     %n : 换行符
+     %C : Java类名
+     %L : 日志输出所在行数
+     %M : 日志输出所在方法名
+     hostName : 本地机器名
+     hostAddress : 本地ip地址 -->
+
     <appenders>
         <!--这个输出控制台的配置-->
         <Console name="consoleAppender" target="SYSTEM_OUT">
