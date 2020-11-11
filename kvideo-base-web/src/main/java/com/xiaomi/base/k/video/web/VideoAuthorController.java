@@ -1,6 +1,7 @@
 package com.xiaomi.base.k.video.web;
 
 import com.xiaomi.base.k.video.domain.KvideoAuthorModel;
+import com.xiaomi.base.k.video.global.annotation.LogAnnotation;
 import com.xiaomi.base.k.video.op.OpResult;
 import com.xiaomi.base.k.video.service.VideoAuthorService;
 import com.xiaomi.base.k.video.vo.KvideoAuthorVO;
@@ -28,6 +29,7 @@ public class VideoAuthorController {
      * @return
      */
     @RequestMapping("/getAuthor")
+    @LogAnnotation
     public OpResult<KvideoAuthorModel> getVideoAuthorInfo(Long authorId) {
         log.info("获取作者：{} 的信息", authorId);
         return videoAuthorService.findAuthorInfoById(authorId);
