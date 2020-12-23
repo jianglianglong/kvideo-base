@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -49,12 +48,20 @@ public class TestMain {
 
     @Test
     public void testListForeach() {
-        List<String> a = new ArrayList<String>();
+        List<String> a = new ArrayList<>();
         a.add("1");
         a.add("2");
         // ConcurrentModificationException
         a.removeIf("2"::equals);
         a.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void testQuMo() {
+        //4 3 5 6 7 8 --- 循环2次
+        //7 8 4 3 5 6
+        System.out.println((4 + 2) % 6);
 
     }
 }
