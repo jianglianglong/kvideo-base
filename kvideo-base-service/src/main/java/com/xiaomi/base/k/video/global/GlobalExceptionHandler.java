@@ -6,6 +6,8 @@ import com.xiaomi.base.k.video.op.OpResultErrorDefine;
 import com.xiaomi.base.k.video.op.VideoOpResultEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -61,6 +63,20 @@ public class GlobalExceptionHandler {
 
         return OpResult.genFailResult(VideoOpResultEnum.UNKNOWN_EXCEPTION);
 
+    }
+    /**
+     * 未知异常
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = BindException.class)
+    public OpResult<OpResultErrorDefine> exceptionHandler(BindException e) {
+
+        BindingResult bindingResult = e.getBindingResult();
+        logger.error("未知 异常");
+
+        return OpResult.genFailResult(VideoOpResultEnum.UNKNOWN_EXCEPTION);
     }
 
 }

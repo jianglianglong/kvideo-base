@@ -7,6 +7,7 @@ import com.xiaomi.base.k.video.service.VideoAuthorService;
 import com.xiaomi.base.k.video.vo.KvideoAuthorVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class VideoAuthorController {
     }
 
     @RequestMapping("/addAuthor")
-    public OpResult<String> addAuthor(KvideoAuthorVO authorVO) {
+    public OpResult<String> addAuthor(@Validated KvideoAuthorVO authorVO) {
         System.out.println(authorVO);
 
         return OpResult.genSuccessResult("success");
