@@ -4,9 +4,7 @@ import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -168,7 +166,10 @@ public class LambdaComponent {
         List<Student> students = booleanListMap.get(true);
         students.forEach(System.out::println);
 
+        //女==[Student(name=小红, sex=女, age=24, grade=89), Student(name=小兰, sex=女, age=22, grade=60)]
+        //男==[Student(name=小明, sex=男, age=25, grade=90), Student(name=小黄, sex=男, age=23, grade=49), Student(name=小绿, sex=男, age=22, grade=50)]
         studentList.stream().collect(Collectors.groupingBy(Student::getSex)).forEach((k, v) -> System.err.println(k + "==" + v));
+        studentList.stream().collect(Collectors.groupingBy(Student::getAge)).forEach((k, v) -> System.err.println(k + "==" + v));
 
     }
 
@@ -200,7 +201,7 @@ public class LambdaComponent {
         Student student1 = new Student("小明", "男","25", 90);
         Student student3 = new Student("小黄", "男","23", 49);
         Student student4 = new Student("小绿", "男","22", 50);
-        Student student5 = new Student("小兰", "女","21", 60);
+        Student student5 = new Student("小兰", "女","22", 60);
 
 
         List<Student> students = new ArrayList<>();

@@ -2,6 +2,7 @@ package com.xiaomi.base.k.video;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * @author: jianglianglong
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@ServletComponentScan
 public class BaseApplication {
 
     public static void main(String[] args) {
